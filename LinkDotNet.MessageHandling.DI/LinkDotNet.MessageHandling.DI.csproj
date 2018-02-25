@@ -9,6 +9,7 @@
     <PackageTags>messagebus messagehandling message lightweight di ioc</PackageTags>
     <RepositoryUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</RepositoryUrl>
     <PackageProjectUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
