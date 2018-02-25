@@ -10,6 +10,7 @@
     <PackageTags>messagebus messagehandling message lightweight</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>LinkDotNet.MessageHandling</Product>
+    <Description>A lean and mean messagebus</Description>
   </PropertyGroup>
 
 </Project>

@@ -9,6 +9,8 @@
     <PackageProjectUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</PackageProjectUrl>
     <RepositoryUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</RepositoryUrl>
     <Authors>LinkDotNet</Authors>
+    <Description>A lean and mean messagebus</Description>
+    <PackageReleaseNotes>Release for .net standard 1.6</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
