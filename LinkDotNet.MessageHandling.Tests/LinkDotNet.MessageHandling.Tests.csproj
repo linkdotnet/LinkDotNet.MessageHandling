@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.9.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LinkDotNet.MessageHandling.Contracts\LinkDotNet.MessageHandling.Contracts.csproj" />
+    <ProjectReference Include="..\LinkDotNet.MessageHandling\LinkDotNet.MessageHandling.csproj" />
+  </ItemGroup>
+
+</Project>

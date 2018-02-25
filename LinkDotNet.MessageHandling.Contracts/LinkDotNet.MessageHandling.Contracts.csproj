@@ -3,16 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
     <Version>0.2</Version>
+    <Authors>Steven Giesel</Authors>
     <Company />
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageTags>messagebus messagehandling message lightweight</PackageTags>
     <PackageProjectUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</PackageProjectUrl>
     <RepositoryUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</RepositoryUrl>
-    <Authors>LinkDotNet</Authors>
+    <PackageTags>messagebus messagehandling message lightweight</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>LinkDotNet.MessageHandling</Product>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\LinkDotNet.MessageHandling.Contracts\LinkDotNet.MessageHandling.Contracts.csproj" />
-  </ItemGroup>
 
 </Project>

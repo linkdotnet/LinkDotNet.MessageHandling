@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <Version>0.2</Version>
+    <Authors>LinkDotNet</Authors>
+    <Company />
+    <Product>LinkDotNet.MessageHandling</Product>
+    <PackageTags>messagebus messagehandling message lightweight di ioc</PackageTags>
+    <RepositoryUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StructureMap" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LinkDotNet.MessageHandling.Contracts\LinkDotNet.MessageHandling.Contracts.csproj" />
+    <ProjectReference Include="..\LinkDotNet.MessageHandling\LinkDotNet.MessageHandling.csproj" />
+  </ItemGroup>
+
+</Project>
