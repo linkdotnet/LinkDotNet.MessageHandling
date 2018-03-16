@@ -5,7 +5,7 @@
     <Version>0.2</Version>
     <Authors>LinkDotNet</Authors>
     <Company />
-    <Product>LinkDotNet.MessageHandling</Product>
+    <Product>LinkDotNet.MessageBus.DI</Product>
     <PackageTags>messagebus messagehandling message lightweight di ioc</PackageTags>
     <RepositoryUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</RepositoryUrl>
     <PackageProjectUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</PackageProjectUrl>
