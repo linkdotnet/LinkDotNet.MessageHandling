@@ -11,6 +11,7 @@
     <Authors>LinkDotNet</Authors>
     <Description>A lean and mean messagebus</Description>
     <PackageReleaseNotes>Release for .net standard 1.6</PackageReleaseNotes>
+    <PackageId>LinkDotNet.MessageBus</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

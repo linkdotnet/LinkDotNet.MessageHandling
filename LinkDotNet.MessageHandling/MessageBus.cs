@@ -12,7 +12,7 @@ namespace LinkDotNet.MessageHandling
     public class MessageBus : IMessageBus
     {
         /// <summary>
-        /// Holds every message which is send through this messagebus mapped to there actions
+        /// Holds every message which is send through this messagebus mapped to there actions                           
         /// </summary>
         private readonly Dictionary<Type, List<Delegate>> _handler = new Dictionary<Type, List<Delegate>>();
 

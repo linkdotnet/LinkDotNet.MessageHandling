@@ -11,6 +11,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>LinkDotNet.MessageHandling</Product>
     <Description>A lean and mean messagebus</Description>
+    <PackageId>LinkDotNet.MessageBus.Contracts</PackageId>
   </PropertyGroup>
 
 </Project>

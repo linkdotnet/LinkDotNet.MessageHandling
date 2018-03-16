@@ -11,6 +11,7 @@
     <PackageProjectUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>A lean and mean messagebus</Description>
+    <PackageId>LinkDotNet.MessageBus.DI</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
