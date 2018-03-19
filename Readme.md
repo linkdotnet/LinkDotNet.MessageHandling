@@ -3,7 +3,7 @@
 This MessageBus is a lean and mean implementation of a messagebus. In its current state it supports the basic features with
 sending and receiving messages.
 
-![NuGet Version and Downloads count](https://buildstats.info/nuget/LinkDotNet.MessageBus)](https://www.nuget.org/packages/LinkDotNet.MessageBus) 
+[![NuGet Version and Downloads count](https://buildstats.info/nuget/LinkDotNet.MessageBus)](https://www.nuget.org/packages/LinkDotNet.MessageBus) 
 
 ## Features
 * Simple and fast
