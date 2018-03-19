@@ -100,6 +100,7 @@ namespace LinkDotNet.MessageHandling
             {
                 executedHandler.AddRange(_handler[handler]);
             }
+
             return executedHandler;
         }
 

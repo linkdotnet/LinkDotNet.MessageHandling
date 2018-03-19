@@ -11,9 +11,6 @@ namespace LinkDotNet.MessageHandling.DI
         /// <summary>
         /// c'tor
         /// </summary>
-        public MessageBusRegistry()
-        {
-            ForSingletonOf<IMessageBus>().Use<MessageBus>();
-        }
+        public MessageBusRegistry() => ForSingletonOf<IMessageBus>().Use<MessageBus>();
     }
 }
