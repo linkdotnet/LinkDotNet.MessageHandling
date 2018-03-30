@@ -1,4 +1,5 @@
 ﻿using LinkDotNet.MessageHandling.Contracts;
+using Moq;
 using NUnit.Framework;
 using System;
 
@@ -19,15 +20,15 @@ namespace LinkDotNet.MessageHandling.Tests
         public void Should_call_handler_on_registered_message()
         {
             var iWasCalled = false;
-            _messageBus.Subscribe<FakeMessage>(() => iWasCalled = true);
+            _messageBus.Subscribe<IMessage>(() => iWasCalled = true);
 
-            _messageBus.Send(new FakeMessage());
+            _messageBus.Send(new Mock<IMessage>().Object);
 
             Assert.That(iWasCalled, Is.True);
         }
 
         [Test]
-        public void Should_not_call_handler_when_is_not_registered_message()
+        public void Should_not_call_handler_when_is_not_associated_message()
         {
             var iWasCalled = false;
             _messageBus.Subscribe<AnotherFakeMessage>(() => iWasCalled = true);
@@ -88,6 +89,44 @@ namespace LinkDotNet.MessageHandling.Tests
             {
                 Assert.That(argExc.ParamName, Is.EqualTo("message"));
             }
+        }
+
+        [Test]
+        public void Should_unsubscribe_action_from_message()
+        {
+            var iWasCalled = false;
+            var actionToUnsubscribe = new Action(() =>
+            {
+                iWasCalled = true;
+            });
+            _messageBus.Subscribe<IMessage>(actionToUnsubscribe);
+            _messageBus.Unsubscribe<IMessage>(actionToUnsubscribe);
+
+            _messageBus.Send(new Mock<IMessage>().Object);
+
+            Assert.That(iWasCalled, Is.False);
+        }
+
+        [Test]
+        public void Should_unsubscribe_parametrized_action_from_message()
+        {
+            var iWasCalled = false;
+            var actionToUnsubscribe = new Action<IMessage>(msg =>
+            {
+                iWasCalled = true;
+            });
+            _messageBus.Subscribe(actionToUnsubscribe);
+
+            _messageBus.Unsubscribe(actionToUnsubscribe);
+
+            Assert.That(iWasCalled, Is.False);
+        }
+
+        [Test]
+        public void Should_throw_argument_null_exception_when_action_is_null()
+        {
+            Assert.Throws(typeof(ArgumentNullException), () => _messageBus.Unsubscribe<IMessage>((Action)null));
+            Assert.Throws(typeof(ArgumentNullException), () => _messageBus.Unsubscribe<IMessage>((Action<IMessage>)null));
         }
     }
 

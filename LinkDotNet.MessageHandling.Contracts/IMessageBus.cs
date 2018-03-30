@@ -16,16 +16,26 @@ namespace LinkDotNet.MessageHandling.Contracts
         /// <summary>
         /// Subscribes to the specific message and executes the action, when this messagebus sends the message
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="action">Action to be called, when the message is received</param>
         void Subscribe<T>(Action action) where T : IMessage;
 
         /// <summary>
         /// Subscribes to the specific message and executes the action, when this messagebus sends the message
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="action">Action to be called, when the message is received</param>
         void Subscribe<T>(Action<T> action) where T : IMessage;
+
+        /// <summary>
+        /// Revokes the subscription from the method to the message
+        /// </summary>
+        /// <param name="action">Action to unsubscribe</param>
+        void Unsubscribe<T>(Action action) where T : IMessage;
+
+        /// <summary>
+        /// Revokes the subscription from the method to the message
+        /// </summary>
+        /// <param name="action">Action to unsubscribe</param>
+        void Unsubscribe<T>(Action<T> action) where T : IMessage;
 
         /// <summary>
         /// Closes the messagebus, which will unsubscribe all actions

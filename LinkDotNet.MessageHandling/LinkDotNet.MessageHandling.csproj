@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
-    <Version>0.2</Version>
+    <Version>0.3</Version>
     <Company />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>messagebus messagehandling message lightweight</PackageTags>
@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/linkdotnet/LinkDotNet.MessageHandling</RepositoryUrl>
     <Authors>LinkDotNet</Authors>
     <Description>A lean and mean messagebus</Description>
-    <PackageReleaseNotes>Release for .net standard 1.6</PackageReleaseNotes>
+    <PackageReleaseNotes>You can unsubscribe actions from message</PackageReleaseNotes>
     <PackageId>LinkDotNet.MessageBus</PackageId>
   </PropertyGroup>
 

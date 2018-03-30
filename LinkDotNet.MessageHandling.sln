@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkDotNet.MessageHandling", "LinkDotNet.MessageHandling\LinkDotNet.MessageHandling.csproj", "{F56A4C2D-6805-49F1-9561-1FF9D7207AEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkDotNet.MessageHandling", "LinkDotNet.MessageHandling\LinkDotNet.MessageHandling.csproj", "{F56A4C2D-6805-49F1-9561-1FF9D7207AEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkDotNet.MessageHandling.Contracts", "LinkDotNet.MessageHandling.Contracts\LinkDotNet.MessageHandling.Contracts.csproj", "{127F83BE-0844-4CA6-8561-1987B48D818D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkDotNet.MessageHandling.Contracts", "LinkDotNet.MessageHandling.Contracts\LinkDotNet.MessageHandling.Contracts.csproj", "{127F83BE-0844-4CA6-8561-1987B48D818D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkDotNet.MessageHandling.Tests", "LinkDotNet.MessageHandling.Tests\LinkDotNet.MessageHandling.Tests.csproj", "{E8FDA71D-1121-43D0-9CD3-1C9E18CDE534}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkDotNet.MessageHandling.Tests", "LinkDotNet.MessageHandling.Tests\LinkDotNet.MessageHandling.Tests.csproj", "{E8FDA71D-1121-43D0-9CD3-1C9E18CDE534}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkDotNet.MessageHandling.DI", "LinkDotNet.MessageHandling.DI\LinkDotNet.MessageHandling.DI.csproj", "{C709CD38-BF0B-4A2E-AF7B-18BD904501E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkDotNet.MessageHandling.DI", "LinkDotNet.MessageHandling.DI\LinkDotNet.MessageHandling.DI.csproj", "{C709CD38-BF0B-4A2E-AF7B-18BD904501E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

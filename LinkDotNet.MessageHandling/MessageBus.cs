@@ -41,13 +41,11 @@ namespace LinkDotNet.MessageHandling
             }
 
             var executingHandler = GetExecutingHandler<T>(typeof(T));
-            if (!executingHandler.Any())
+            if (executingHandler.Any())
             {
-                return;
+                // Call every handler
+                CallHandler(message, executingHandler);
             }
-
-            // Call every handler
-            CallHandler(message, executingHandler);
         }
 
         /// <summary>
@@ -68,6 +66,22 @@ namespace LinkDotNet.MessageHandling
         public void Subscribe<T>(Action<T> action) where T : IMessage
         {
             AddHandlerToMessageType(typeof(T), action);
+        }
+
+        /// <summary>
+        /// Revokes the subscription from the method to the message
+        /// </summary>
+        public void Unsubscribe<T>(Action action) where T : IMessage
+        {
+            DeleteHandlerByMessage<T>(action);
+        }
+
+        /// <summary>
+        /// Revokes the subscription from the method to the message
+        /// </summary>
+        public void Unsubscribe<T>(Action<T> action) where T : IMessage
+        {
+            DeleteHandlerByMessage<T>(action);
         }
 
         /// <summary>
@@ -123,6 +137,25 @@ namespace LinkDotNet.MessageHandling
             else
             {
                 _handler[messageType] = new List<Delegate> { action };
+            }
+        }
+
+        private void DeleteHandlerByMessage<T>(Delegate handlerToRemove) where T : IMessage
+        {
+            if (handlerToRemove == null)
+            {
+                throw new ArgumentNullException(nameof(handlerToRemove));
+            }
+
+            if (!_handler.ContainsKey(typeof(T)))
+            {
+                return;
+            }
+
+            var handler = _handler[typeof(T)];
+            if (handler.Contains(handlerToRemove))
+            {
+                handler.Remove(handlerToRemove);
             }
         }
     }
