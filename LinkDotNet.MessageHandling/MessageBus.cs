@@ -40,7 +40,7 @@ namespace LinkDotNet.MessageHandling
                 throw new ArgumentNullException(nameof(message));
             }
 
-            var executingHandler = GetExecutingHandler<T>(typeof(T));
+            var executingHandler = GetExecutingHandler(typeof(T));
             if (executingHandler.Any())
             {
                 // Call every handler
@@ -49,9 +49,8 @@ namespace LinkDotNet.MessageHandling
         }
 
         /// <summary>
-        /// Subscribes to the specific message and executes the action, when this messagebus sends the message
+        /// Subscribes to the specific message and executes the registered action on receiving the message
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="action">Action to be called, when the message is received</param>
         public void Subscribe<T>(Action action) where T : IMessage
         {
@@ -59,7 +58,7 @@ namespace LinkDotNet.MessageHandling
         }
 
         /// <summary>
-        /// Subscribes to the specific message and executes the action, when this messagebus sends the message
+        /// Subscribes to the specific message and executes the registered action on receiving the message
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="action">Action to be called, when the message is received</param>
@@ -107,7 +106,7 @@ namespace LinkDotNet.MessageHandling
             }
         }
 
-        private List<Delegate> GetExecutingHandler<T>(Type type) where T : IMessage
+        private List<Delegate> GetExecutingHandler(Type type)
         {
             var executedHandler = new List<Delegate>();
             foreach (var handler in _handler.Keys.Where(handler => handler.GetTypeInfo().IsAssignableFrom(type)))

@@ -14,13 +14,13 @@ namespace LinkDotNet.MessageHandling.Contracts
         void Send<T>(T message) where T : IMessage;
 
         /// <summary>
-        /// Subscribes to the specific message and executes the action, when this messagebus sends the message
+        /// Subscribes to the specific message and executes the registered action on receiving the message
         /// </summary>
         /// <param name="action">Action to be called, when the message is received</param>
         void Subscribe<T>(Action action) where T : IMessage;
 
         /// <summary>
-        /// Subscribes to the specific message and executes the action, when this messagebus sends the message
+        /// Subscribes to the specific message and executes the registered action on receiving the message
         /// </summary>
         /// <param name="action">Action to be called, when the message is received</param>
         void Subscribe<T>(Action<T> action) where T : IMessage;

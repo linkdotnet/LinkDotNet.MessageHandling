@@ -1,7 +1,7 @@
-﻿using LinkDotNet.MessageHandling.Contracts;
+﻿using System;
 using Moq;
 using NUnit.Framework;
-using System;
+using LinkDotNet.MessageHandling.Contracts;
 
 namespace LinkDotNet.MessageHandling.Tests
 {
@@ -126,7 +126,15 @@ namespace LinkDotNet.MessageHandling.Tests
         public void Should_throw_argument_null_exception_when_action_is_null()
         {
             Assert.Throws(typeof(ArgumentNullException), () => _messageBus.Unsubscribe<IMessage>((Action)null));
-            Assert.Throws(typeof(ArgumentNullException), () => _messageBus.Unsubscribe<IMessage>((Action<IMessage>)null));
+            Assert.Throws(typeof(ArgumentNullException), () => _messageBus.Unsubscribe((Action<IMessage>)null));
+        }
+
+        [Test]
+        public void Should_not_throw_exception_when_removing_not_added_subscription()
+        {
+            var unknownAction = new Action<IMessage>(msg => { });
+
+            Assert.DoesNotThrow(() => _messageBus.Unsubscribe(unknownAction));
         }
     }
 
@@ -136,7 +144,7 @@ namespace LinkDotNet.MessageHandling.Tests
 
     public class AnotherFakeMessage : IMessage
     {
-        public int Id { get; private set; }
+        public int Id { get; }
 
         public AnotherFakeMessage(int id)
         {
