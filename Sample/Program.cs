@@ -23,9 +23,9 @@ namespace Sample
             //// Now try to terminate again
             terminator.TryTerminate();
 
-            //// We could terminate our session... hurrraaa!
+            //// We can terminate our session... hurrraaa!
             //// Keep in mind, that the initializer and the terminator don't know each other
-            //// They could be in differenz assemblies too
+            //// They could be in different assemblies too
             Console.ReadKey();
         }
     }
