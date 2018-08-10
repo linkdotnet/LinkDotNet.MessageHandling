@@ -7,7 +7,7 @@ sending and receiving messages.
 
 ## Features
 * Simple and fast
-* Uses structuremap - So you can create it with DI
+* Uses structuremap - So you can create it with DI or use your own DI-Framework
 * Loose coupling
 * No other dependencies (only if you use the DI-package in combination with structuremap)
 
