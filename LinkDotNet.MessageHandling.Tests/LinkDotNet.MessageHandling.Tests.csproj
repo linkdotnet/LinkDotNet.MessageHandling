@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LinkDotNet.MessageHandling.Contracts\LinkDotNet.MessageHandling.Contracts.csproj" />
+    <ProjectReference Include="..\LinkDotNet.MessageHandling.Windows\LinkDotNet.MessageHandling.Windows.csproj" />
     <ProjectReference Include="..\LinkDotNet.MessageHandling\LinkDotNet.MessageHandling.csproj" />
   </ItemGroup>
 

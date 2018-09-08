@@ -33,12 +33,9 @@ namespace LinkDotNet.MessageHandling
         /// Sends an message
         /// </summary>
         /// <param name="message">The message-object to be send</param>
-        public void Send<T>(T message) where T : IMessage
+        public virtual void Send<T>(T message) where T : IMessage
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
+            EnsureMessageIsValid(message);
 
             var executingHandler = GetExecutingHandler(typeof(T));
             if (executingHandler.Any())
@@ -92,7 +89,18 @@ namespace LinkDotNet.MessageHandling
             _handler.Clear();
         }
 
-        private static void CallHandler<T>(T message, List<Delegate> executingHandler) where T : IMessage
+        /// <summary>
+        /// Validates that the message object is valud
+        /// </summary>
+        protected static void EnsureMessageIsValid<T>(T message) where T : IMessage
+        {
+            if (message == null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+        }
+
+        protected static void CallHandler<T>(T message, List<Delegate> executingHandler) where T : IMessage
         {
             foreach (var actionHandler in executingHandler)
             {
@@ -106,7 +114,10 @@ namespace LinkDotNet.MessageHandling
             }
         }
 
-        private List<Delegate> GetExecutingHandler(Type type)
+        /// <summary>
+        /// Gets every handler for the matching type
+        /// </summary>
+        protected List<Delegate> GetExecutingHandler(Type type)
         {
             var executedHandler = new List<Delegate>();
             foreach (var handler in _handler.Keys.Where(handler => handler.GetTypeInfo().IsAssignableFrom(type)))

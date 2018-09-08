@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
-    <Version>0.3</Version>
+    <Version>0.4</Version>
     <Company />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>messagebus messagehandling message lightweight</PackageTags>

@@ -6,23 +6,23 @@ using LinkDotNet.MessageHandling.Contracts;
 namespace LinkDotNet.MessageHandling.Tests
 {
     [TestFixture]
-    public class MessageBusFixture
+    public abstract class MessageBusFixtureBase<TMessageBus> where TMessageBus : MessageBus
     {
-        private MessageBus _messageBus;
+        protected TMessageBus MessageBus { get; private set; }
 
         [SetUp]
         public void SetUp()
         {
-            _messageBus = new MessageBus();
+            MessageBus = CreateMessageBus();
         }
 
         [Test]
         public void Should_call_handler_on_registered_message()
         {
             var iWasCalled = false;
-            _messageBus.Subscribe<IMessage>(() => iWasCalled = true);
+            MessageBus.Subscribe<IMessage>(() => iWasCalled = true);
 
-            _messageBus.Send(new Mock<IMessage>().Object);
+            MessageBus.Send(new Mock<IMessage>().Object);
 
             Assert.That(iWasCalled, Is.True);
         }
@@ -31,9 +31,9 @@ namespace LinkDotNet.MessageHandling.Tests
         public void Should_not_call_handler_when_is_not_associated_message()
         {
             var iWasCalled = false;
-            _messageBus.Subscribe<AnotherFakeMessage>(() => iWasCalled = true);
+            MessageBus.Subscribe<AnotherFakeMessage>(() => iWasCalled = true);
 
-            _messageBus.Send(new FakeMessage());
+            MessageBus.Send(new FakeMessage());
 
             Assert.That(iWasCalled, Is.False);
         }
@@ -42,9 +42,9 @@ namespace LinkDotNet.MessageHandling.Tests
         public void Should_pass_in_parameters()
         {
             var id = 0;
-            _messageBus.Subscribe<AnotherFakeMessage>((msg) => id = msg.Id);
+            MessageBus.Subscribe<AnotherFakeMessage>((msg) => id = msg.Id);
 
-            _messageBus.Send(new AnotherFakeMessage(3));
+            MessageBus.Send(new AnotherFakeMessage(3));
 
             Assert.That(id, Is.EqualTo(3));
         }
@@ -54,10 +54,10 @@ namespace LinkDotNet.MessageHandling.Tests
         {
             var baseWasCalled = false;
             var subWasCalled = false;
-            _messageBus.Subscribe<IMessage>(() => baseWasCalled = true);
-            _messageBus.Subscribe<AnotherFakeMessage>(() => subWasCalled = true);
+            MessageBus.Subscribe<IMessage>(() => baseWasCalled = true);
+            MessageBus.Subscribe<AnotherFakeMessage>(() => subWasCalled = true);
 
-            _messageBus.Send(new FakeMessage());
+            MessageBus.Send(new FakeMessage());
 
             Assert.That(baseWasCalled, Is.True);
             Assert.That(subWasCalled, Is.False);
@@ -68,11 +68,11 @@ namespace LinkDotNet.MessageHandling.Tests
         {
             var wasCalled = false;
             var wasSubscribedAfterClose = false;
-            _messageBus.Subscribe<FakeMessage>(() => wasCalled = true);
-            _messageBus.Close();
-            _messageBus.Subscribe<FakeMessage>(() => wasSubscribedAfterClose = true);
+            MessageBus.Subscribe<FakeMessage>(() => wasCalled = true);
+            MessageBus.Close();
+            MessageBus.Subscribe<FakeMessage>(() => wasSubscribedAfterClose = true);
 
-            _messageBus.Send(new FakeMessage());
+            MessageBus.Send(new FakeMessage());
 
             Assert.That(wasCalled, Is.False);
             Assert.That(wasSubscribedAfterClose, Is.False);
@@ -83,7 +83,7 @@ namespace LinkDotNet.MessageHandling.Tests
         {
             try
             {
-                _messageBus.Send<IMessage>(null);
+                MessageBus.Send<IMessage>(null);
             }
             catch (ArgumentNullException argExc)
             {
@@ -95,14 +95,11 @@ namespace LinkDotNet.MessageHandling.Tests
         public void Should_unsubscribe_action_from_message()
         {
             var iWasCalled = false;
-            var actionToUnsubscribe = new Action(() =>
-            {
-                iWasCalled = true;
-            });
-            _messageBus.Subscribe<IMessage>(actionToUnsubscribe);
-            _messageBus.Unsubscribe<IMessage>(actionToUnsubscribe);
+            var actionToUnsubscribe = new Action(() => { iWasCalled = true; });
+            MessageBus.Subscribe<IMessage>(actionToUnsubscribe);
+            MessageBus.Unsubscribe<IMessage>(actionToUnsubscribe);
 
-            _messageBus.Send(new Mock<IMessage>().Object);
+            MessageBus.Send(new Mock<IMessage>().Object);
 
             Assert.That(iWasCalled, Is.False);
         }
@@ -111,13 +108,10 @@ namespace LinkDotNet.MessageHandling.Tests
         public void Should_unsubscribe_parametrized_action_from_message()
         {
             var iWasCalled = false;
-            var actionToUnsubscribe = new Action<IMessage>(msg =>
-            {
-                iWasCalled = true;
-            });
-            _messageBus.Subscribe(actionToUnsubscribe);
+            var actionToUnsubscribe = new Action<IMessage>(msg => { iWasCalled = true; });
+            MessageBus.Subscribe(actionToUnsubscribe);
 
-            _messageBus.Unsubscribe(actionToUnsubscribe);
+            MessageBus.Unsubscribe(actionToUnsubscribe);
 
             Assert.That(iWasCalled, Is.False);
         }
@@ -125,8 +119,8 @@ namespace LinkDotNet.MessageHandling.Tests
         [Test]
         public void Should_throw_argument_null_exception_when_action_is_null()
         {
-            Assert.Throws(typeof(ArgumentNullException), () => _messageBus.Unsubscribe<IMessage>((Action)null));
-            Assert.Throws(typeof(ArgumentNullException), () => _messageBus.Unsubscribe((Action<IMessage>)null));
+            Assert.Throws(typeof(ArgumentNullException), () => MessageBus.Unsubscribe<IMessage>((Action) null));
+            Assert.Throws(typeof(ArgumentNullException), () => MessageBus.Unsubscribe((Action<IMessage>) null));
         }
 
         [Test]
@@ -134,7 +128,17 @@ namespace LinkDotNet.MessageHandling.Tests
         {
             var unknownAction = new Action<IMessage>(msg => { });
 
-            Assert.DoesNotThrow(() => _messageBus.Unsubscribe(unknownAction));
+            Assert.DoesNotThrow(() => MessageBus.Unsubscribe(unknownAction));
+        }
+
+        protected abstract TMessageBus CreateMessageBus();
+    }
+
+    public class MessageBusFixture : MessageBusFixtureBase<MessageBus>
+    {
+        protected override MessageBus CreateMessageBus()
+        {
+            return new MessageBus();
         }
     }
 

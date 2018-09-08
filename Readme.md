@@ -58,6 +58,9 @@ If you want to use Dependency Injection with structuremap just let structuremap 
 This will create a single IMessageBus-instance.
 Otherwise you can configure the messagebus yourself (to fit your needs).
 
+## DispatchesMessageBus
+A special implementaion is the ``` DispatchesMessageBus ``` which will automatically calls every registered Action on the UI-Thread. So even if you are receiving a message on a worker thread, you can update your UI-components.
+
 ## Advantages
 **So why using a messagebus?**
 The main advantage is you don't have to create dependencies where they are not useful.

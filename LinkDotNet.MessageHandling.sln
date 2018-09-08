@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkDotNet.MessageHandling.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkDotNet.MessageHandling.DI", "LinkDotNet.MessageHandling.DI\LinkDotNet.MessageHandling.DI.csproj", "{C709CD38-BF0B-4A2E-AF7B-18BD904501E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{41E725D4-4869-402C-9A52-A17A344C1259}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "Sample\Sample.csproj", "{41E725D4-4869-402C-9A52-A17A344C1259}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkDotNet.MessageHandling.Windows", "LinkDotNet.MessageHandling.Windows\LinkDotNet.MessageHandling.Windows.csproj", "{55D4D970-75DD-4AF9-9D58-8BA76B63671E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{41E725D4-4869-402C-9A52-A17A344C1259}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41E725D4-4869-402C-9A52-A17A344C1259}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41E725D4-4869-402C-9A52-A17A344C1259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55D4D970-75DD-4AF9-9D58-8BA76B63671E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D4D970-75DD-4AF9-9D58-8BA76B63671E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D4D970-75DD-4AF9-9D58-8BA76B63671E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D4D970-75DD-4AF9-9D58-8BA76B63671E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
